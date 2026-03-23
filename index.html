@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aware — Know What You Consume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <a href="#" class="nav-logo"><span></span> Aware</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#cta">Get access</a></li>
+    </ul>
+    <button class="nav-cta">REQUEST DEMO</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">// Resource Intelligence Platform</p>
+      <h1>
+        Know what<br/>
+        you <span class="accent">consume</span>.<br/>
+        <em>Change</em> what<br/>
+        you waste.
+      </h1>
+      <p class="hero-desc">
+        Real-time tracking of electricity, gas, and water consumption —
+        for individuals and companies who want to make smarter,
+        more sustainable decisions.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary btn-large">GET STARTED FREE</button>
+        <button class="btn-ghost">Watch demo</button>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="panel-frame">
+        <div class="panel-header">
+          <span class="panel-title">LIVE CONSUMPTION FEED</span>
+          <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+        </div>
+
+        <div class="meter elec">
+          <div class="meter-top">
+            <span class="meter-label"><span class="meter-icon">⚡</span>Electricity</span>
+            <span class="meter-value" id="elec-val">24.3<span class="meter-unit">kWh</span></span>
+          </div>
+          <div class="meter-bar-bg"><div class="meter-bar-fill" id="elec-bar" style="width:62%"></div></div>
+        </div>
+
+        <div class="meter gas">
+          <div class="meter-top">
+            <span class="meter-label"><span class="meter-icon">🔥</span>Gas</span>
+            <span class="meter-value" id="gas-val">9.1<span class="meter-unit">m³</span></span>
+          </div>
+          <div class="meter-bar-bg"><div class="meter-bar-fill" id="gas-bar" style="width:45%"></div></div>
+        </div>
+
+        <div class="meter water">
+          <div class="meter-top">
+            <span class="meter-label"><span class="meter-icon">💧</span>Water</span>
+            <span class="meter-value" id="water-val">142<span class="meter-unit">L</span></span>
+          </div>
+          <div class="meter-bar-bg"><div class="meter-bar-fill" id="water-bar" style="width:55%"></div></div>
+        </div>
+
+        <div class="panel-chart">
+          <canvas id="sparkline"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span class="scroll-line"></span>
+      SCROLL TO EXPLORE
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat reveal">
+      <div class="stat-num" data-target="2400">0</div>
+      <div class="stat-label">kWh saved monthly</div>
+    </div>
+    <div class="stat reveal reveal-delay-1">
+      <div class="stat-num" data-target="340">0</div>
+      <div class="stat-label">m³ gas monitored</div>
+    </div>
+    <div class="stat reveal reveal-delay-2">
+      <div class="stat-num" data-target="18500">0</div>
+      <div class="stat-label">Liters tracked daily</div>
+    </div>
+    <div class="stat reveal reveal-delay-3">
+      <div class="stat-num" data-target="30">0</div>
+      <div class="stat-label">% avg. cost reduction</div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="features-header reveal">
+      <p class="section-eyebrow">// What we track</p>
+      <h2 class="section-title">Three utilities.<br/>One dashboard.</h2>
+      <p>Stop juggling separate bills and apps. Aware unifies your electricity, gas, and water data in a single, intelligent interface — updated in real time.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card elec-card reveal">
+        <p class="feature-num">01 —</p>
+        <span class="feature-icon">⚡</span>
+        <h3>Electricity</h3>
+        <p>Monitor kilowatt-hour consumption hour by hour. Identify peak usage windows and reduce your grid dependency with actionable insights.</p>
+        <div class="feature-bg-num">01</div>
+      </div>
+      <div class="feature-card gas-card reveal reveal-delay-1">
+        <p class="feature-num">02 —</p>
+        <span class="feature-icon">🔥</span>
+        <h3>Gas</h3>
+        <p>Track cubic meter readings across heating and cooking systems. Spot inefficiencies before they become costly and flag unusual spikes instantly.</p>
+        <div class="feature-bg-num">02</div>
+      </div>
+      <div class="feature-card water-card reveal reveal-delay-2">
+        <p class="feature-num">03 —</p>
+        <span class="feature-icon">💧</span>
+        <h3>Water</h3>
+        <p>Measure daily litre consumption and track long-term usage trends. Detect leaks early and build smarter habits around your most precious resource.</p>
+        <div class="feature-bg-num">03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how" id="how">
+    <div class="how-header">
+      <div class="reveal">
+        <p class="section-eyebrow">// The process</p>
+        <h2 class="section-title">From raw data<br/>to real decisions.</h2>
+      </div>
+      <p class="reveal reveal-delay-1">
+        Aware connects to your utility meters via API, stores your historical records,
+        and surfaces the patterns that matter — so you spend less time reading bills
+        and more time reducing them.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-circle">01</div>
+        <h4>Connect</h4>
+        <p>Link your utility accounts via our API integration in under 2 minutes.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-circle">02</div>
+        <h4>Collect</h4>
+        <p>We pull real consumption data continuously and store it securely.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-circle">03</div>
+        <h4>Analyze</h4>
+        <p>Visualize trends, compare periods, and spot waste automatically.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-circle">04</div>
+        <h4>Reduce</h4>
+        <p>Act on smart alerts and recommendations to cut costs and emissions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <p class="section-eyebrow reveal">// Start today</p>
+    <h2 class="section-title reveal">Awareness is the<br/><em>first</em> step to change.</h2>
+    <p class="reveal">
+      Join individuals and companies already using Aware to understand,
+      reduce, and take control of their resource consumption.
+    </p>
+    <div class="cta-actions reveal">
+      <button class="btn-primary btn-large">GET STARTED FREE</button>
+      <button class="nav-cta" style="padding:1rem 2rem">REQUEST A DEMO</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo"><span></span> Aware</div>
+    <p>© 2026 Aware. Built for a more conscious world.</p>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
