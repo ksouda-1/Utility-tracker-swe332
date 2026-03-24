@@ -5,6 +5,16 @@
 **Aware** is a web application that pulls real-time consumption data for gas, water, and electricity, giving individuals and companies clear visibility into their resource usage. By making consumption data accessible and easy to understand, Aware helps users make smarter, more sustainable decisions.
 
 ---
+Members
+
+Ahmed Ksouda | 230513531
+Youssef Sidky | 230513025
+Mahmoud Abumustafa | 230513575
+Faris Abdelrahman | 230513535
+Abdelbasit Gassara | 230513458 
+
+
+---
 
 ## 🌍 Why Aware?
 
@@ -126,12 +136,6 @@ Contributions are welcome! To get started:
 5. Open a Pull Request
 
 Please make sure your code is clean and well-commented before submitting.
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
