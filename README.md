@@ -5,13 +5,15 @@
 **Aware** is a web application that pulls real-time consumption data for gas, water, and electricity, giving individuals and companies clear visibility into their resource usage. By making consumption data accessible and easy to understand, Aware helps users make smarter, more sustainable decisions.
 
 ---
-Members
+Team Details
+| Name | Student ID | GitHub Username |
+|------|------------|-----------------|
+| Ahmed Ksouda | 230513531 | — |
+| Youssef Sidky | 230513025 | — |
+| Mahmoud Abumustafa | 230513575 | — |
+| Faris Abdelrahman | 230513535 | — |
+| Abdelbasset Gassara | 230513458 | Abdelbassetga |
 
-Ahmed Ksouda | 230513531
-Youssef Sidky | 230513025
-Mahmoud Abumustafa | 230513575
-Faris Abdelrahman | 230513535
-Abdelbasset Gassara | 230513458 
 
 
 ---
