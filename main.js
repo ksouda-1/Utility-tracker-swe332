@@ -146,3 +146,5 @@ setInterval(() => {
   points.push(15 + Math.random() * 30);
   drawSparkline();
 }, 2200);
+
+alert("professional software engineer login");
