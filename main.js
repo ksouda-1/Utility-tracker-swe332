@@ -148,3 +148,4 @@ setInterval(() => {
 }, 2200);
 
 alert("professional software engineer login");
+alert("i dont cqre qbout your review")
