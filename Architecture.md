@@ -18,17 +18,19 @@
 
 ## Table of Contents
 
+
 1. [Scope](#1-scope)
-2. [References](#2-references)
-3. [Software Architecture](#3-software-architecture)
-4. [Architectural Goals & Constraints](#4-architectural-goals--constraints)
-5. [Logical Architecture](#5-logical-architecture)
-6. [Process Architecture](#6-process-architecture)
-7. [Development Architecture](#7-development-architecture)
-8. [Physical Architecture](#8-physical-architecture)
-9. [Scenarios](#9-scenarios)
-10. [Size and Performance](#10-size-and-performance)
-11. [Quality](#11-quality)
+2. [Use Case View](#2-use-case-view)
+3. [References](#3-references)
+4. [Software Architecture](#4-software-architecture)
+5. [Architectural Goals & Constraints](#5-architectural-goals--constraints)
+6. [Logical Architecture](#6-logical-architecture)
+7. [Process Architecture](#7-process-architecture)
+8. [Development Architecture](#8-development-architecture)
+9. [Physical Architecture](#9-physical-architecture)
+10. [Scenarios](#10-scenarios)
+11. [Size and Performance](#11-size-and-performance)
+12. [Quality](#12-quality)
 
 **Appendices**
 - [Acronyms and Abbreviations](#acronyms-and-abbreviations)
@@ -39,12 +41,13 @@
 
 ## List of Figures
 
-- Figure 1 — High-Level System Overview
-- Figure 2 — Logical Layer Diagram
-- Figure 3 — Data Flow: Static vs. Live Data
-- Figure 4 — Component Interaction Diagram
-- Figure 5 — Database Entity-Relationship Diagram
-- Figure 6 — Deployment Diagram
+- Figure 1 — Use Case Diagram
+- Figure 2 — High-Level System Overview
+- Figure 3 — Logical Layer Diagram
+- Figure 4 — Data Flow: Static vs. Live Data
+- Figure 5 — Component Interaction Diagram
+- Figure 6 — Database Entity-Relationship Diagram
+- Figure 7 — Deployment Diagram
 
 ---
 
@@ -81,7 +84,76 @@ The following are explicitly out of scope for version 1.0:
 
 ---
 
-## 2. References
+## 2. Use Case View
+
+### 2.1 Overview
+
+The Use Case View describes the system functionality from the perspective of external actors interacting with the system. It captures the system’s functional requirements and user interactions.
+
+The main actors in the system are:
+- Visitor
+- Registered User
+- Admin
+- External Utility API
+
+---
+
+### 2.2 Use Case Diagram
+
+The following diagram illustrates the interactions between system actors and core functionalities of the Aware platform.
+
+![Use Case Diagram](docs/use-case-diagram.png)
+
+*Figure 1 — Use Case Diagram*
+
+---
+
+### 2.3 Actor Descriptions
+
+| Actor | Description |
+|------|-------------|
+| Visitor | Unauthenticated user who can explore the platform, request a demo, and create an account |
+| Registered User | Authenticated user who monitors utility usage, views insights, and manages tracked properties |
+| Admin | System administrator responsible for user management, alerts, and monitoring system activity |
+| External Utility API | External service that provides real-time and historical utility consumption data |
+
+---
+
+### 2.4 Main Use Cases
+
+The following use cases represent the primary interactions supported by the system:
+
+#### Visitor
+- View landing page
+- Sign up
+- Log in
+- Request demo
+
+#### Registered User
+- Log in
+- Manage profile
+- Add property
+- Add meter
+- View live consumption data
+- View historical usage
+- Compare usage trends
+- Receive alerts and recommendations
+
+#### Admin
+- Log in
+- Manage users
+- Monitor system activity
+- Review alerts
+- Configure system thresholds
+
+#### External Utility API
+- Provide real-time consumption data
+- Provide historical consumption data
+- Synchronize meter readings
+
+---
+
+## 3. References
 
 | # | Document | Source |
 |---|----------|--------|
@@ -95,9 +167,9 @@ The following are explicitly out of scope for version 1.0:
 
 ---
 
-## 3. Software Architecture
+## 4. Software Architecture
 
-### 3.1 Overview
+### 4.1 Overview
 
 Aware follows a **client-centric, layered architecture** for its v1.0 prototype. Because no dedicated backend server exists in the current phase, the system relies on:
 
@@ -130,9 +202,9 @@ Aware follows a **client-centric, layered architecture** for its v1.0 prototype.
    │  (Historical Data)    │
    └──────────────────────┘
 ```
-*Figure 1 — High-Level System Overview*
+*Figure 2 — High-Level System Overview*
 
-### 3.2 Technology Stack
+### 4.2 Technology Stack
 
 | Layer | Technology | Version |
 |-------|------------|---------|
@@ -147,9 +219,9 @@ Aware follows a **client-centric, layered architecture** for its v1.0 prototype.
 
 ---
 
-## 4. Architectural Goals & Constraints
+## 5. Architectural Goals & Constraints
 
-### 4.1 Goals
+### 5.1 Goals
 
 **G-01 — Simplicity:** The prototype must be runnable without a dedicated backend server. Any developer should be able to open the project and have it working within minutes.
 
@@ -161,7 +233,7 @@ Aware follows a **client-centric, layered architecture** for its v1.0 prototype.
 
 **G-05 — Visual fidelity:** The UI must accurately represent real-time and historical consumption patterns with clear, accessible data visualisations.
 
-### 4.2 Constraints
+### 5.2 Constraints
 
 **C-01 — No server-side rendering:** All rendering happens in the browser. The server serves only static files and JSON.
 
@@ -175,9 +247,9 @@ Aware follows a **client-centric, layered architecture** for its v1.0 prototype.
 
 ---
 
-## 5. Logical Architecture
+## 6. Logical Architecture
 
-### 5.1 Layer Diagram
+### 6.1 Layer Diagram
 
 The system is decomposed into four logical layers:
 
@@ -201,9 +273,9 @@ The system is decomposed into four logical layers:
 │  MySQL + schema.sql + seed.sql (production) │
 └─────────────────────────────────────────────┘
 ```
-*Figure 2 — Logical Layer Diagram*
+*Figure 3 — Logical Layer Diagram*
 
-### 5.2 Component Responsibilities
+### 6.2 Component Responsibilities
 
 #### 5.2.1 Presentation Layer
 
@@ -214,14 +286,14 @@ The system is decomposed into four logical layers:
 | `css/styles.css` | Landing page styles, custom cursor, scroll animations |
 | `css/dashboard.css` | Dashboard layout, sidebar, panel styles, responsive breakpoints |
 
-#### 5.2.2 Application Logic Layer
+#### 6.2.2 Application Logic Layer
 
 | File | Responsibility |
 |------|----------------|
 | `js/main.js` | Custom cursor tracking, scroll-reveal animations, live meter simulation for landing page sparklines |
 | `js/dashboard.js` | Chart.js initialisation (line chart, donut chart), heatmap generation, KPI population, live data polling, efficiency score calculation |
 
-#### 5.2.3 Data Access Layer
+#### 6.2.3 Data Access Layer
 
 | Function | Description |
 |----------|-------------|
@@ -229,7 +301,7 @@ The system is decomposed into four logical layers:
 | `getMonthlySummary()` | Returns aggregated totals and percentage changes for the current month |
 | `startLiveStream(callback, interval)` | Polls the API at a set interval and invokes a callback with simulated live readings |
 
-#### 5.2.4 Data Layer
+#### 6.2.4 Data Layer
 
 **Prototype (json-server):**
 - `db.json` contains 90 days of seeded consumption data for two users (individual and company)
@@ -241,7 +313,7 @@ The system is decomposed into four logical layers:
 - `seed.sql` populates 90 days of realistic consumption data
 - Queries are issued through the backend API (future scope)
 
-### 5.3 Data Flow
+### 6.3 Data Flow
 
 ```
 [External API / json-server]
@@ -256,13 +328,13 @@ The system is decomposed into four logical layers:
         │
         └──▶ startLiveStream() ──▶ KPI live values (polled every 2s)
 ```
-*Figure 3 — Data Flow: Static vs. Live Data*
+*Figure 4 — Data Flow: Static vs. Live Data*
 
 ---
 
-## 6. Process Architecture
+## 7. Process Architecture
 
-### 6.1 Runtime Processes
+### 7.1 Runtime Processes
 
 In the prototype configuration, the following processes run concurrently:
 
@@ -272,11 +344,11 @@ In the prototype configuration, the following processes run concurrently:
 | json-server | `localhost:3000` | Exposes mock REST API from `db.json` |
 | MySQL server | `localhost:3306` | Stores and serves historical data (optional in prototype) |
 
-### 6.2 Concurrency Model
+### 7.2 Concurrency Model
 
 The frontend operates entirely on the browser's single-threaded JavaScript event loop. Asynchronous operations (API calls, live stream polling) use the Fetch API with `async/await`. No Web Workers are used in v1.0.
 
-### 6.3 Live Data Stream
+### 7.3 Live Data Stream
 
 The live data simulation in `js/api.js` uses `setInterval` to generate pseudo-random readings within realistic bounds:
 
@@ -288,7 +360,7 @@ The live data simulation in `js/api.js` uses `setInterval` to generate pseudo-ra
 
 These values are generated client-side and do not require a server round-trip. When connected to a real utility API, `startLiveStream()` replaces the generator with a real fetch call — no other code changes are needed.
 
-### 6.4 Sequence: Dashboard Initialisation
+### 7.4 Sequence: Dashboard Initialisation
 
 ```
 Browser                js/dashboard.js          js/api.js         json-server
@@ -309,9 +381,9 @@ Browser                js/dashboard.js          js/api.js         json-server
 
 ---
 
-## 7. Development Architecture
+## 8. Development Architecture
 
-### 7.1 Project Structure
+### 8.1 Project Structure
 
 ```
 aware/
@@ -337,7 +409,7 @@ aware/
 └── ARCHITECTURE.md         # This document
 ```
 
-### 7.2 Development Environment
+### 8.2 Development Environment
 
 | Requirement | Details |
 |-------------|---------|
@@ -347,7 +419,7 @@ aware/
 | MySQL | 8.0 (optional for prototype) |
 | Local server | Live Server (VS Code extension) or `npx serve` |
 
-### 7.3 Running the Project
+### 8.3 Running the Project
 
 ```bash
 # 1. Install json-server
@@ -360,7 +432,7 @@ json-server --watch data/db.json --port 3000
 #    or: npx serve .
 ```
 
-### 7.4 Coding Conventions
+### 8.4 Coding Conventions
 
 - **No build step required** — plain HTML/CSS/JS, no bundler or transpiler
 - **ES6+ syntax** — arrow functions, `async/await`, template literals, destructuring
@@ -370,9 +442,9 @@ json-server --watch data/db.json --port 3000
 
 ---
 
-## 8. Physical Architecture
+## 9. Physical Architecture
 
-### 8.1 Prototype Deployment
+### 9.1 Prototype Deployment
 
 In the current prototype phase, all components run on a single developer machine:
 
@@ -390,9 +462,9 @@ In the current prototype phase, all components run on a single developer machine
 │  └────────────────────────────────────┘  │
 └──────────────────────────────────────────┘
 ```
-*Figure 6 — Prototype Deployment Diagram*
+*Figure 7 — Prototype Deployment Diagram*
 
-### 8.2 Target Production Deployment
+### 9.2 Target Production Deployment
 
 When moving to production, the recommended architecture separates concerns across tiers:
 
@@ -413,7 +485,7 @@ When moving to production, the recommended architecture separates concerns acros
                       └───────────────────┘
 ```
 
-### 8.3 Migration Path
+### 9.3 Migration Path
 
 To migrate from prototype to production:
 
@@ -425,9 +497,9 @@ To migrate from prototype to production:
 
 ---
 
-## 9. Scenarios
+## 10. Scenarios
 
-### 9.1 Scenario 1 — Individual User Views Weekly Electricity Usage
+### 10.1 Scenario 1 — Individual User Views Weekly Electricity Usage
 
 **Actor:** Individual user (residential)
 **Goal:** Understand electricity consumption for the past 7 days
@@ -440,7 +512,7 @@ To migrate from prototype to production:
 5. `startLiveStream()` begins polling → KPI live value updates every 2 seconds
 6. User selects "30D" range button → `getConsumptionHistory('electricity', 30)` re-renders the chart
 
-### 9.2 Scenario 2 — Company Reviews Multi-Utility Cost Breakdown
+### 10.2 Scenario 2 — Company Reviews Multi-Utility Cost Breakdown
 
 **Actor:** Facilities manager (corporate)
 **Goal:** Understand relative cost distribution across utilities this month
@@ -452,7 +524,7 @@ To migrate from prototype to production:
 4. User hovers over a donut segment → Chart.js tooltip displays exact cost and percentage
 5. User reads efficiency score panel to identify which utility has the lowest efficiency rating
 
-### 9.3 Scenario 3 — Alert Threshold Breach
+### 10.3 Scenario 3 — Alert Threshold Breach
 
 **Actor:** Aware system (automated)
 **Goal:** Notify user of abnormal gas consumption
@@ -463,7 +535,7 @@ To migrate from prototype to production:
 3. Alerts panel on dashboard fetches `/alerts` endpoint and renders a warning card
 4. Badge counter on sidebar nav item increments
 
-### 9.4 Scenario 4 — Developer Adds a New Utility Type
+### 10.4 Scenario 4 — Developer Adds a New Utility Type
 
 **Actor:** Developer
 **Goal:** Extend Aware to support solar panel output
@@ -477,9 +549,9 @@ To migrate from prototype to production:
 
 ---
 
-## 10. Size and Performance
+## 11. Size and Performance
 
-### 10.1 Asset Size Targets
+### 11.1 Asset Size Targets
 
 | Asset | Target Size |
 |-------|-------------|
@@ -496,7 +568,7 @@ To migrate from prototype to production:
 **Total first-load payload (uncached):** ~410 KB
 **Repeat visits (cached):** < 110 KB
 
-### 10.2 Runtime Performance Targets
+### 11.2 Runtime Performance Targets
 
 | Metric | Target |
 |--------|--------|
@@ -506,7 +578,7 @@ To migrate from prototype to production:
 | Heatmap render (7 × 24 = 168 cells) | < 50 ms |
 | Chart.js line chart (30 data points) | < 100 ms |
 
-### 10.3 Database Size Estimates
+### 11.3 Database Size Estimates
 
 | Table | Rows (seed) | Estimated Size |
 |-------|-------------|----------------|
@@ -517,29 +589,29 @@ To migrate from prototype to production:
 
 ---
 
-## 11. Quality
+## 12. Quality
 
-### 11.1 Reliability
+### 12.1 Reliability
 
 - The mock API (`json-server`) is stateless and restarts cleanly from `db.json`
 - API calls in `js/api.js` are wrapped in `try/catch`; errors surface gracefully as empty states in the UI rather than crashes
 - Live stream polling is self-healing — if a fetch fails, the interval continues and retries on the next tick
 
-### 11.2 Maintainability
+### 12.2 Maintainability
 
 - **Single responsibility per file:** each file has one clear purpose (see §7.1)
 - **API abstraction:** swapping from mock to production requires changing one constant
 - **CSS custom properties:** the entire colour theme and spacing system can be updated in one `:root` block
 - **No build tooling:** zero configuration overhead — any text editor and a browser is sufficient
 
-### 11.3 Usability
+### 12.3 Usability
 
 - Dashboard is fully responsive down to 768px viewport width (mobile-friendly layout)
 - Colour coding is consistent across all views: teal = electricity, amber = gas, sky blue = water, violet = cost
 - Tooltips on all chart data points; hover states on all interactive elements
 - Screen-reader-compatible HTML structure with semantic landmarks
 
-### 11.4 Security (Future Scope)
+### 12.4 Security (Future Scope)
 
 The following security measures are out of scope for v1.0 but must be addressed before production deployment:
 
@@ -549,7 +621,7 @@ The following security measures are out of scope for v1.0 but must be addressed 
 - CORS policy restricting requests to the frontend origin
 - Rate limiting on the backend API to prevent abuse
 
-### 11.5 Testability
+### 12.5 Testability
 
 - `js/api.js` exports all functions, making them independently unit-testable
 - Mock data in `db.json` provides a deterministic baseline for integration tests
