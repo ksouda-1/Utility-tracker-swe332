@@ -8,7 +8,7 @@
 Team Details
 | Name | Student ID | GitHub Username |
 |------|------------|-----------------|
-| Ahmed Ksouda | 230513531 | — |
+| Ahmed Ksouda | 230513531 | ksouda-1|
 | Youssef Sidky | 230513025 | — |
 | Mahmoud Abumustafa | 230513575 | — |
 | Faris Abdelrahman | 230513535 | — |
