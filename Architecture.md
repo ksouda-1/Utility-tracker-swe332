@@ -171,5 +171,78 @@ For this demo, the entire application runs on a single local machine:
 - The *browser* accesses the application at http://localhost:3000.
 
 In a real-world deployment of Aware, the server would be hosted in the cloud, the database would be managed separately, and smart meters would push readings to the API over a secure connection.
+## 9. Scenarios
 
+### Scenario 1 — Household User Checks Their Monthly Usage
+
+1. The user opens the Aware dashboard in their browser.
+2. The page loads and fetches consumption data from GET /api/readings.
+3. The server returns records from the pre-seeded MySQL database.
+4. The front end renders a line chart showing electricity, gas, and water usage over the past month.
+5. Summary cards show the total for each utility and highlight any significant increases compared to the previous month.
+
+### Scenario 2 — User Monitors Live Consumption
+
+1. The user opens the Live Monitor page.
+2. A JavaScript interval begins generating simulated readings for electricity, gas, and water every few seconds.
+3. The current consumption values update on screen in real time.
+4. The user can see at a glance whether their usage is within a normal range.
+5. In a full production system, these readings would come from actual smart meters installed at the user's property.
+
+---
+
+## 10. Size and Performance
+
+| Metric | Target |
+|--------|--------|
+| Page Load Time | < 2 seconds on localhost |
+| API Response Time | < 200ms for local database queries |
+| Demo Data Volume | ~100–200 pre-seeded consumption records |
+| Live Update Interval | Every 3–5 seconds (client-side simulation) |
+| Codebase Size | Estimated ~500–1,000 lines across all files |
+
+---
+
+## 11. Quality
+
+| Quality Attribute | Approach |
+|---|---|
+| *Usability* | Clean, clearly labeled interface accessible to non-technical home users |
+| *Maintainability* | Each file has a single responsibility; the layered structure is straightforward to navigate and extend |
+| *Reliability* | Static seed data ensures the demo always presents consistent, predictable content regardless of environment |
+| *Simplicity* | Complexity is kept to the minimum needed for a convincing and functional demo |
+
+---
+
+## Appendices
+
+### Acronyms and Abbreviations
+
+| Acronym | Definition |
+|---------|------------|
+| API | Application Programming Interface |
+| CSS | Cascading Style Sheets |
+| HTML | HyperText Markup Language |
+| JS | JavaScript |
+| JSON | JavaScript Object Notation |
+| MySQL | My Structured Query Language |
+| SQL | Structured Query Language |
+| UI | User Interface |
+
+---
+
+### Definitions
+
+- *Smart Meter* — A digital utility meter capable of transmitting consumption data electronically. In this demo, smart meter behavior is simulated in software.
+- *Static / Seed Data* — Pre-written fake records inserted into the database via seed.sql to give the demo a realistic-looking consumption history.
+- *Simulated Live Reading* — A randomly generated consumption value produced by a JavaScript interval on the client, used to mimic a real-time meter feed during the demo.
+- *Dashboard* — The main page of the application, displaying charts and summaries of utility consumption.
+
+---
+
+### Design Principles
+
+1. *Keep it Simple* — Only the complexity needed for a convincing, functional demo is introduced.
+2. *Separation of Concerns* — The client, server, and database each handle their own responsibilities cleanly and independently.
+3. *Demo-First, Production-Aware* — Decisions prioritize a realistic and presentable demo, while the architecture is documented to reflect how the system would work with real meter data in a production environment.
 
