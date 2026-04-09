@@ -34,11 +34,6 @@
 ## List of Figures
 
 - Figure 1 — Use Case Diagram
-- Figure 2 — Logical Architecture: Three-Tier Layer Diagram
-- Figure 3 — Process Architecture: Live Reading Flow
-- Figure 4 — Development Architecture: Repository Structure
-- Figure 5 — Physical Architecture: Deployment Diagram
-- Figure 6 — Scenario: User Monitors Live Consumption
 
 ---
 
