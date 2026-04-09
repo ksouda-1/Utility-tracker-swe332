@@ -17,9 +17,7 @@ Team Details
 ---
 
 ## 👤 Author
-
-
-
+link to the Architechture.md file:https://github.com/ksouda-1/Utility-tracker-swe332/blob/main/Architecture.md
 ---
 
 *Aware — because knowing is the first step to changing.*
