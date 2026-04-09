@@ -134,26 +134,26 @@ Aware follows a standard **three-tier web architecture**:
 
 
 aware/
-├── README.md
-├── ARCHITECTURE.md
-├── package.json
-├── server/
-│   ├── index.js            # Express server entry point
-│   └── routes/
-│       └── readings.js     # API routes for consumption data
-├── client/
-│   ├── index.html          # Dashboard page
-│   ├── live.html           # Live monitor page
-│   ├── history.html        # History & reports page
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       ├── dashboard.js    # Fetches data and renders charts
-│       ├── live.js         # Simulates and displays live readings
-│       └── history.js      # Fetches and renders historical table
-└── database/
-    ├── schema.sql          # Table definitions
-    └── seed.sql            # Pre-loaded fake data for the demo
+  - README.md
+  - ARCHITECTURE.md
+  - package.json
+  - server/
+      - index.js (Express server entry point)
+      - routes/
+          - readings.js (API routes for consumption data)
+  - client/
+      - index.html (Dashboard page)
+      - live.html (Live monitor page)
+      - history.html (History & reports page)
+      - css/
+          - styles.css
+      - js/
+          - dashboard.js (Fetches data and renders charts)
+          - live.js (Simulates and displays live readings)
+          - history.js (Fetches and renders historical table)
+  - database/
+      - schema.sql (Table definitions)
+      - seed.sql (Pre-loaded fake data for the demo)
 
 
 ### Collaboration Workflow
