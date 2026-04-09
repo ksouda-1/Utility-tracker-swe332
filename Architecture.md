@@ -17,26 +17,23 @@
 ## Table of Contents
 
 1. [Scope](#1-scope)
-2. [References](#2-references)
-3. [Software Architecture](#3-software-architecture)
-4. [Architectural Goals & Constraints](#4-architectural-goals--constraints)
-5. [Logical Architecture](#5-logical-architecture)
-6. [Process Architecture](#6-process-architecture)
-7. [Development Architecture](#7-development-architecture)
-8. [Physical Architecture](#8-physical-architecture)
-9. [Scenarios](#9-scenarios)
-10. [Size and Performance](#10-size-and-performance)
-11. [Quality](#11-quality)
+2. [Use Case View](#2-use-case-view)
+3. [References](#3-references)
+4. [Software Architecture](#4-software-architecture)
+5. [Architectural Goals & Constraints](#5-architectural-goals--constraints)
+6. [Logical Architecture](#6-logical-architecture)
+7. [Process Architecture](#7-process-architecture)
+8. [Development Architecture](#8-development-architecture)
+9. [Physical Architecture](#9-physical-architecture)
+10. [Scenarios](#10-scenarios)
+11. [Size and Performance](#11-size-and-performance)
+12. [Quality](#12-quality)
 
 ---
 
 ## List of Figures
 
-- Figure 1 — Logical Architecture: Three-Tier Layer Diagram
-- Figure 2 — Process Architecture: Live Reading Flow
-- Figure 3 — Development Architecture: Repository Structure
-- Figure 4 — Physical Architecture: Deployment Diagram
-- Figure 5 — Scenario: User Monitors Live Consumption
+- Figure 1 — Use Case Diagram
 
 ---
 
@@ -55,7 +52,76 @@ The application collects data from smart meters, displays live consumption readi
 
 ---
 
-## 2. References
+## 2. Use Case View
+
+### 2.1 Overview
+
+The Use Case View describes the system functionality from the perspective of external actors interacting with the system. It captures the system’s functional requirements and user interactions.
+
+The main actors in the system are:
+- Visitor
+- Registered User
+- Admin
+- External Utility API
+
+---
+
+### 2.2 Use Case Diagram
+
+The following diagram illustrates the interactions between system actors and core functionalities of the Aware platform.
+
+![Use Case Diagram](docs/use-case-diagram.png)
+
+*Figure 1 — Use Case Diagram*
+
+---
+
+### 2.3 Actor Descriptions
+
+| Actor | Description |
+|------|-------------|
+| Visitor | Unauthenticated user who can explore the platform, request a demo, and create an account |
+| Registered User | Authenticated user who monitors utility usage, views insights, and manages tracked properties |
+| Admin | System administrator responsible for user management, alerts, and monitoring system activity |
+| External Utility API | External service that provides real-time and historical utility consumption data |
+
+---
+
+### 2.4 Main Use Cases
+
+The following use cases represent the primary interactions supported by the system:
+
+#### Visitor
+- View landing page
+- Sign up
+- Log in
+- Request demo
+
+#### Registered User
+- Log in
+- Manage profile
+- Add property
+- Add meter
+- View live consumption data
+- View historical usage
+- Compare usage trends
+- Receive alerts and recommendations
+
+#### Admin
+- Log in
+- Manage users
+- Monitor system activity
+- Review alerts
+- Configure system thresholds
+
+#### External Utility API
+- Provide real-time consumption data
+- Provide historical consumption data
+- Synchronize meter readings
+
+---
+
+## 3. References
 
 - Kruchten, P. B. (1995). *The 4+1 View Model of Architecture.* IEEE Software, 12(6), 42–50.
 - [4+1 Architectural View Model — Wikipedia](https://en.wikipedia.org/wiki/4%2B1_architectural_view_model)
@@ -65,7 +131,7 @@ The application collects data from smart meters, displays live consumption readi
 
 ---
 
-## 3. Software Architecture
+## 4. Software Architecture
 
 Aware follows a standard **three-tier web architecture**:
 
@@ -75,7 +141,7 @@ Aware follows a standard **three-tier web architecture**:
 
 ---
 
-## 4. Architectural Goals & Constraints
+## 5. Architectural Goals & Constraints
 
 ### Goals
 
@@ -90,7 +156,7 @@ Aware follows a standard **three-tier web architecture**:
 - The application is intended to run locally for the demo and is not deployed to a production environment.
 
 ---
-## 5. Logical Architecture
+## 6. Logical Architecture
 
 ### Presentation Layer (Client)
 
@@ -111,7 +177,7 @@ Aware follows a standard **three-tier web architecture**:
 
 ---
 
-## 6. Process Architecture
+## 7. Process Architecture
 
 ### Fetching Historical Data
 
@@ -128,7 +194,7 @@ Aware follows a standard **three-tier web architecture**:
 
 ---
 
-## 7. Development Architecture
+## 8. Development Architecture
 
 ### Repository Structure
 
@@ -162,7 +228,7 @@ The team follows the *GitHub Flow* branching model. Each feature is developed on
 
 ---
 
-## 8. Physical Architecture
+## 9. Physical Architecture
 
 For this demo, the entire application runs on a single local machine:
 
@@ -171,7 +237,8 @@ For this demo, the entire application runs on a single local machine:
 - The *browser* accesses the application at http://localhost:3000.
 
 In a real-world deployment of Aware, the server would be hosted in the cloud, the database would be managed separately, and smart meters would push readings to the API over a secure connection.
-## 9. Scenarios
+
+## 10. Scenarios
 
 ### Scenario 1 — Household User Checks Their Monthly Usage
 
@@ -191,7 +258,7 @@ In a real-world deployment of Aware, the server would be hosted in the cloud, th
 
 ---
 
-## 10. Size and Performance
+## 11. Size and Performance
 
 | Metric | Target |
 |--------|--------|
@@ -203,7 +270,7 @@ In a real-world deployment of Aware, the server would be hosted in the cloud, th
 
 ---
 
-## 11. Quality
+## 12. Quality
 
 | Quality Attribute | Approach |
 |---|---|
