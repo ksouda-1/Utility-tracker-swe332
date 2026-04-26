@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aware — History</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span>Aware</span>
+    </div>
+
+    <ul>
+      <li>
+        <a class="nav-item" href="/index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" href="/live.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Live Monitor
+          <span class="live-badge"><span class="live-dot"></span>Live</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item active" href="/history.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+          History
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">Aware v1.0</div>
+  </aside>
+
+  <!-- ── Main ────────────────────────────────────────────────────── -->
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h1>History</h1>
+        <p>Browse and filter your past utility readings</p>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Filters -->
+      <div class="filters-bar">
+        <div class="filter-group">
+          <label for="filter-type">Utility Type</label>
+          <select id="filter-type">
+            <option value="all">All utilities</option>
+            <option value="electricity">Electricity</option>
+            <option value="gas">Gas</option>
+            <option value="water">Water</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filter-from">From</label>
+          <input type="date" id="filter-from" />
+        </div>
+        <div class="filter-group">
+          <label for="filter-to">To</label>
+          <input type="date" id="filter-to" />
+        </div>
+        <button class="btn btn-primary" id="btn-apply">Apply</button>
+        <button class="btn btn-ghost" id="btn-reset">Reset</button>
+      </div>
+
+      <!-- Summary row -->
+      <div class="cards-grid" id="history-summary" style="display:none;">
+        <div class="card" id="hist-elec-card">
+          <div class="card-label">Electricity Total</div>
+          <div class="card-value" id="hist-elec">—<span>kWh</span></div>
+        </div>
+        <div class="card" id="hist-gas-card">
+          <div class="card-label">Gas Total</div>
+          <div class="card-value" id="hist-gas">—<span>m³</span></div>
+        </div>
+        <div class="card" id="hist-water-card">
+          <div class="card-label">Water Total</div>
+          <div class="card-value" id="hist-water">—<span>L</span></div>
+        </div>
+        <div class="card">
+          <div class="card-label">Records Found</div>
+          <div class="card-value" id="hist-count">—</div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-card">
+        <div class="table-card-header">
+          <h3>Readings</h3>
+          <span id="result-count" style="font-size:12px;color:var(--c-muted);"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Utility</th>
+                <th>Value</th>
+                <th>Unit</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+              <tr><td colspan="4" class="state-msg">Loading readings…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+
+</div>
+
+<script src="/js/history.js"></script>
+</body>
+</html>

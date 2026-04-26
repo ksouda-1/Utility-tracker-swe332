@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aware — Live Monitor</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span>Aware</span>
+    </div>
+
+    <ul>
+      <li>
+        <a class="nav-item" href="/index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a class="nav-item active" href="/live.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Live Monitor
+          <span class="live-badge"><span class="live-dot"></span>Live</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" href="/history.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+          History
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">Aware v1.0</div>
+  </aside>
+
+  <!-- ── Main ────────────────────────────────────────────────────── -->
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h1>Live Monitor</h1>
+        <p>Real-time consumption readings — updated every 1.5 seconds</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#64748b;">
+        <span class="live-dot" style="width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
+        <span id="last-updated">Waiting for update…</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Live Meter Cards -->
+      <div class="meters-grid">
+
+        <!-- Electricity -->
+        <div class="meter-card elec">
+          <div class="meter-top">
+            <span class="meter-label">⚡ Electricity</span>
+            <span class="meter-status normal" id="elec-status">Normal</span>
+          </div>
+          <div class="meter-reading">
+            <span class="meter-value" id="elec-value">—</span>
+            <span class="meter-unit">kWh</span>
+          </div>
+          <div class="meter-chart-wrap">
+            <canvas id="elec-spark"></canvas>
+          </div>
+          <div class="meter-footer">
+            <span>Today so far: <strong id="elec-today">—</strong> kWh</span>
+            <span>Avg: <strong id="elec-avg">—</strong> kWh</span>
+          </div>
+        </div>
+
+        <!-- Gas -->
+        <div class="meter-card gas">
+          <div class="meter-top">
+            <span class="meter-label">🔥 Gas</span>
+            <span class="meter-status normal" id="gas-status">Normal</span>
+          </div>
+          <div class="meter-reading">
+            <span class="meter-value" id="gas-value">—</span>
+            <span class="meter-unit">m³/h</span>
+          </div>
+          <div class="meter-chart-wrap">
+            <canvas id="gas-spark"></canvas>
+          </div>
+          <div class="meter-footer">
+            <span>Today so far: <strong id="gas-today">—</strong> m³</span>
+            <span>Avg: <strong id="gas-avg">—</strong> m³/h</span>
+          </div>
+        </div>
+
+        <!-- Water -->
+        <div class="meter-card water">
+          <div class="meter-top">
+            <span class="meter-label">💧 Water</span>
+            <span class="meter-status normal" id="water-status">Normal</span>
+          </div>
+          <div class="meter-reading">
+            <span class="meter-value" id="water-value">—</span>
+            <span class="meter-unit">L/min</span>
+          </div>
+          <div class="meter-chart-wrap">
+            <canvas id="water-spark"></canvas>
+          </div>
+          <div class="meter-footer">
+            <span>Today so far: <strong id="water-today">—</strong> L</span>
+            <span>Avg: <strong id="water-avg">—</strong> L/min</span>
+          </div>
+        </div>
+
+      </div><!-- /meters-grid -->
+
+      <!-- Running Cost Card -->
+      <div class="card" style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;">
+        <div>
+          <div class="card-label">Estimated Cost Today</div>
+          <div class="card-value" id="cost-today">£—</div>
+          <div class="card-sub">Based on current rates</div>
+        </div>
+        <div style="flex:1;min-width:200px;font-size:12px;color:var(--c-muted);line-height:2;">
+          <div style="display:flex;justify-content:space-between;max-width:280px;">
+            <span>Electricity rate</span><strong>£0.28 / kWh</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;max-width:280px;">
+            <span>Gas rate</span><strong>£0.07 / m³</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;max-width:280px;">
+            <span>Water rate</span><strong>£0.003 / L</strong>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/js/live.js"></script>
+</body>
+</html>
