@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aware — Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ─────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span>Aware</span>
+    </div>
+
+    <ul>
+      <li>
+        <a class="nav-item active" href="/index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" href="/live.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Live Monitor
+          <span class="live-badge"><span class="live-dot"></span>Live</span>
+        </a>
+      </li>
+      <li>
+        <a class="nav-item" href="/history.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+          History
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">Aware v1.0</div>
+  </aside>
+
+  <!-- ── Main ────────────────────────────────────────────────────── -->
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p id="current-date">Loading…</p>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Summary Cards -->
+      <div class="cards-grid" id="summary-cards">
+        <!-- Injected by dashboard.js -->
+        <div class="card"><div class="state-msg">Loading…</div></div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>Monthly Usage</h3>
+          <p>Total consumption per utility over the last 6 months</p>
+          <div class="chart-wrap"><canvas id="chart-monthly"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>Last 30 Days</h3>
+          <p>Daily consumption trend per utility type</p>
+          <div class="chart-wrap"><canvas id="chart-daily"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Recent Readings -->
+      <div class="table-card">
+        <div class="table-card-header">
+          <h3>Recent Readings</h3>
+          <a href="/history.html" class="btn btn-ghost">View all</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Utility</th>
+                <th>Reading</th>
+                <th>Unit</th>
+              </tr>
+            </thead>
+            <tbody id="recent-tbody">
+              <tr><td colspan="4" class="state-msg">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
