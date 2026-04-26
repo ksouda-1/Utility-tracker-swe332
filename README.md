@@ -18,6 +18,9 @@ Team Details
 
 ## 👤 Author
 link to the Architechture.md file:https://github.com/ksouda-1/Utility-tracker-swe332/blob/main/Architecture.md
+link to youtube video: https://youtu.be/V8HJZyDhk0U
+link to github repo : https://github.com/ksouda-1/Utility-tracker-swe332.git
+
 ---
 
 *Aware — because knowing is the first step to changing.*
